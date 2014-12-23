@@ -1,0 +1,75 @@
+#bin/bash
+
+SERVICE='minecraftserver.jar'
+USER='minecraft'
+SCREEN='illycraft'
+MCPATH='/home/minecraft/illycraft'
+BACKUPPATH='../../remote/backupdir/'
+WORLDNAME='IllyCraft'
+MINHEAP=2048
+MAXHEAP=8012
+CPU_COUNT=1
+
+INVOCATION="java -Xmx${MINHEAP}G -Xms${MAXHEAP}G -jar $SERVICE nogui"
+
+ME='whoami'
+as_user() {
+    if [ $ME == $USER ] ; then
+        bash -C "$1"
+    else
+        su - $USER -C "$1"
+    fi
+}
+
+mc_start() {
+    if  pgrep -u $USER -f $SERVICE > /dev/null
+        then
+            echo "$SERVICE is already running!"
+        else
+            echo "Starting $SERVICE..."
+            cd $MCPATH
+            as_user "cd $MCPATH && screen -h $SCREEN -dmS minecraft $INVOCATION"
+            sleep 7
+            if pgrep -u $USERNAME -f $SERVICE > /dev/null
+            then
+                echo "$SERVICE is now running."
+            else
+                echo "Error! Could not start $SERVICE!"
+        fi
+   fi
+}
+
+mc_saveoff() {
+    if pgrep -u $USER -f $SERVICE > /dev/null
+        then
+            echo "$SERVICE is running... suspending saves"
+            as_user "screen -p 0 -S $SCREEN -X eval 'stuff \"save-off\"\015' "
+            as_user "screen -p 0 -S $SCREEN -X eval 'stuff \"save-all\"\015' "
+            sync
+    else
+        echo "$SERVICE is not running can't  save.
+    fi
+}
+
+mc_saveon() {
+    if pgrep -u $USER -f $SERVICE > /dev/null
+        then
+            echo "$SERVICE is running... re-enabling saves"
+            as_user "screen -p 0 -S $SCREEN -X eval 'stuff \"save-on\"\015' "
+    else
+        echo "$SERVICE is not running can't save.
+    fi
+}
+
+mc_backup() {
+
+    NOW=`date "+%Y-%m-%d_%Hh%M"`
+    BACKUP_FILE="$BACKUPPATH/${WORLD}_${NOW}.tar
+
+    as_user "screen -p 0 -S minecraft -X eval 'stuff \"say SERVER BACKUP STARTING. Server going readonly...\"\015'"
+    mc_saveoff
+    echo "Backing up the world files...."
+#    as_user "tar -C MCPATH"
+
+    
+}
