@@ -6,8 +6,8 @@ SCREEN='illycraft'
 MCPATH='/home/minecraft/illycraft'
 BACKUPPATH='../../remote/backupdir/'
 WORLDNAME='IllyCraft'
-MINHEAP=2048
-MAXHEAP=8012
+MINHEAP=8
+MAXHEAP=2
 CPU_COUNT=1
 
 
