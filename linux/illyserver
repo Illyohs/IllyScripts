@@ -127,7 +127,7 @@ case "$1" in
      mc_start
      ;;
     stop)
-     me_backup
+     mc_backup
      mc_stop
      ;;
     restart)
