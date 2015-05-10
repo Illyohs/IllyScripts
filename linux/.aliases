@@ -18,5 +18,5 @@ alias merge='git merge'
 alias add='git add --verbose -A'
 alias commit='git commit --signoff'
 alias playmusic='mplayer -shuffle -novideo'
-
+alias mkdir='mkdir -p'
 
