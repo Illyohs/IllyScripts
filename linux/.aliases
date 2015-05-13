@@ -18,6 +18,8 @@ alias merge='git merge'
 alias add='git add --verbose -A'
 alias commit='git commit --signoff'
 alias status='git status'
+alias branch='git branch'
+alias checkout='git checkout'
 
 alias playmusic='mplayer -shuffle -novideo'
 alias mkdir='mkdir -p'
