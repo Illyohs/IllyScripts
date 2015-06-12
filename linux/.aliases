@@ -24,3 +24,4 @@ alias checkout='git checkout'
 alias playmusic='mplayer -shuffle -novideo'
 alias mkdir='mkdir -p'
 
+export PULSE_LATENCY_MSEC=60
