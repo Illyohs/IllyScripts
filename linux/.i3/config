@@ -128,8 +128,8 @@ bindsym $mod+F6 exec light -U 1
 bindsym $mod+F7 exec light -A 1
 
 #Sound
-bindsym $mod+F10 exec /usr/bin/pulseaudio-ctl up
-bindsys $mod+F11 exec /usr/bin/pulseaudio-ctl down
+bindsym $mod+F10 exec ponymix decrease 1
+bindsym $mod+F11 exec ponymix increase 1
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
