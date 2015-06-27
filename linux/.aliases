@@ -24,3 +24,5 @@ alias checkout='git checkout'
 alias playmusic='mplayer -shuffle -novideo'
 alias mkdir='mkdir -p'
 
+export BEEP=/usr/share/sounds/KDE-Im-Message-In.ogg
+alias beep='paplay $BEEP'
