@@ -27,4 +27,7 @@ URxvt*color15: white
 
 URxvt.font: xft:monospace:size=14
 
-
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/opera
+URxvt.matcher.button: 1
+URxvt.matcher.rend.0: Uline Bold fg5
